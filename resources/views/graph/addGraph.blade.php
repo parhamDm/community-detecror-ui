@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center" >
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header">{{ __('Add Graph') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="/graph" enctype="multipart/form-data">
@@ -32,13 +33,13 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Graph Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input id="name" class="form-control" name="name" required >
 
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert" style="display: block">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -47,18 +48,10 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
+                                        {{ __('Submit') }}
                                     </button>
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
                                 </div>
                             </div>
-
-
                         </form>
                     </div>
                 </div>

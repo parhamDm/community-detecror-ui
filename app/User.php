@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    static function graphs($user_id){
+        return Graph::where('USER_ID','=',$user_id);
+    }
+    public function graph_list(){
+        return Graph::where('USER_ID','=',$this->user_id);
+    }
 }

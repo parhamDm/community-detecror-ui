@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\CommunityResult;
 use App\Graph;
+use App\Providers\CommunityDetectionApiProvider;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -27,7 +28,6 @@ class ProcessGraph implements ShouldQueue
     public function __construct($g)
     {
         $this->graph = $g;
-
     }
 
     /**
@@ -37,9 +37,19 @@ class ProcessGraph implements ShouldQueue
      */
     public function handle()
     {
-        $g = $this->graph;
+        $file_name = $this->graph->file_name;
+        $file = Storage::get("graphs/".$file_name.".txt");
+        $g_id = Graph::where("file_name",'=',$file_name)->first();
+
         $api = resolve('CommunityDetectionApi');
-        $api->edgeBetweenness($g);
+        //register
+        $api->registerGraph($file_name,$file,$g_id);
+        //community detection methods
+        $api->fastgreedy($file_name,$g_id['id']);
+        $api->walktrap($file_name,$g_id['id']);
+        //unregister
+        $api->unregisterGraph($file_name,$g_id);
+
     }
 
 

@@ -19,3 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('graph', 'GraphController');
+Route::get('/community/compare/{graph}', 'GraphController@compare')->name('compare');;
+Route::get('/community/getImage/{path}', 'GraphController@getImage')->name('imageuri');
+Route::get('/graph/getFile/{path}', 'GraphController@getFile')->name('fileuri');
+Route::get('/graph/destroy/{path}', 'GraphController@destroy')->name('remove_graph');

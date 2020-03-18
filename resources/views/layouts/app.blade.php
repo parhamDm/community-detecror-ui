@@ -67,18 +67,23 @@
                                 </div>
                             </li>
                         @endguest
-{{--                        <li class="nav-item dropdown">--}}
-{{--                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
-{{--                                {{__('messages.graph')}} <span class="caret"></span>--}}
-{{--                            </a>--}}
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{__('graph')}} <span class="caret"></span>
+                            </a>
 
-{{--                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
-{{--                                <a class="dropdown-item" href="{{ route('createGraph') }}">--}}
-{{--                                    {{ __('messages.graph') }}--}}
-{{--                                </a>--}}
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/graph/create">
+                                    {{ __('Add Graph') }}
+                                </a>
+                                <a class="dropdown-item" href="/graph/">
+                                    {{ __('Graphs') }}
+                                </a>
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-{{--                            </div>--}}
-{{--                        </li>--}}
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
